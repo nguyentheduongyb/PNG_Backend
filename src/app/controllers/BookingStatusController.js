@@ -1,12 +1,9 @@
-const User = require('~/app/Models/UserModels')
-const { multipleMongooseToObject, mongooseToObject } = require('~/util/mongoose')
-const { json, response } = require('express')
-
-class UserController {
+const BookingStatus = require('~/app/Models/BookingStatus')
+class BookingStatusController {
         create(req, res, next) {
                 const formData = req.body
-                const user = new User(formData)
-                user.save()
+                const bookingStatus = new BookingStatus(formData)
+                bookingStatus.save()
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -15,7 +12,7 @@ class UserController {
                         });
         }
         get(req, res, next) {
-                User.find({})
+                BookingStatus.find({})
                         .then(result => {
                                 res.json(result)
                         })
@@ -26,7 +23,7 @@ class UserController {
                 if (!req.params.id) {
                         return res.sendStatus(400)
                 }
-                User.updateOne({ _id: req.params.id }, req.body)
+                BookingStatus.updateOne({ _id: req.params.id }, req.body)
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -38,7 +35,7 @@ class UserController {
                 if (!req.params.id) {
                         return res.sendStatus(400)
                 }
-                User.deleteOne({ _id: req.params.id })
+                BookingStatus.deleteOne({ _id: req.params.id })
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -46,14 +43,6 @@ class UserController {
                                 res.sendStatus(500); // Trả về status code 500 nếu có lỗi xảy ra
                         });
         }
-        booking(req, res, next) {
-
-                Booking.find().populate('tour')
-                        .then(result => {
-                                res.json(result)
-                        })
-                        .catch(next)
-        }
 
 }
-module.exports = new UserController();
+module.exports = new BookingStatusController();

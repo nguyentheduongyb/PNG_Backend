@@ -9,6 +9,8 @@ const orderStatusRouter = require('~/routers/orderStatusRouter');
 const dealRouter = require('~/routers/dealRouter');
 const agencyRouter = require('~/routers/agencyRouter');
 const tourRouter = require('~/routers/tourRouter');
+// const bookingStatusRouter = require('~/routers/bookingStatusRouter');
+const bookingRouter = require('~/routers/bookingRouter');
 
 function routers(app) {
     app.use('/users', userRouter);
@@ -16,6 +18,8 @@ function routers(app) {
     app.use('/api/deal', dealRouter);
 
     app.use('/api/agency', agencyRouter);
+
+    app.use('/api/booking', bookingRouter);
 
     app.use('/api/tour', tourRouter);
 
