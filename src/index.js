@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 db.connect()
 app.use('/public/Uploads', express.static('./public/Uploads'))
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://itourgo.vercel.app'); // Thay đổi giá trị này thành nguồn gốc của bạn
+    res.setHeader('Access-Control-Allow-Origin', ['https://itourgo.vercel.app', 'http://localhost:3000']); // Thay đổi giá trị này thành nguồn gốc của bạn
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
