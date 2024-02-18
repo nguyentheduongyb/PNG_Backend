@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const User = new Schema({
-        email: { type: String, require: true },
+        email: { type: String, require: true, unique: true },
         isAdmin: { type: Boolean }
 }, {
         timestamps: true

@@ -8,5 +8,5 @@ router.post('/', UserController.create);
 router.put('/:id', auth, UserController.update);
 router.delete('/:id', auth, UserController.delete);
 router.get('/', UserController.booking);
-router.get('/', auth, UserController.get);
+// router.get('/', auth, UserController.get);
 module.exports = router;

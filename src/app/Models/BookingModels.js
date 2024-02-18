@@ -5,15 +5,15 @@ mongoose.plugin(slug);
 
 const Booking = new Schema({
         user: {
-                type: mongoose.Schema.Types.ObjectId, ref: 'User'
+                type: mongoose.Schema.Types.ObjectId, ref: 'User', require: true
         },
         tour: {
-                type: mongoose.Schema.Types.ObjectId, ref: 'Tour'
+                type: mongoose.Schema.Types.ObjectId, ref: 'Tour', require: true
         },
         // bookingStatus: {
         //         type: mongoose.Schema.Types.ObjectId, ref: 'BookingStatus'
         // },
-        status: { type: Boolean, require: true, default: true }
+        // status: { type: Boolean, require: true, default: true }
 }, {
         timestamps: true
 });

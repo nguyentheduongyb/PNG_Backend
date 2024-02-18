@@ -1,9 +1,10 @@
-const Tour = require('~/app/Models/TourModels')
-class TourController {
+const Rank = require('~/app/Models/RankModels')
+
+class RankController {
         create(req, res, next) {
                 const formData = req.body
-                const tour = new Tour(formData)
-                tour.save()
+                const rank = new Rank(formData)
+                rank.save()
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -12,7 +13,7 @@ class TourController {
                         });
         }
         get(req, res, next) {
-                Tour.find({})
+                Rank.find({})
                         .then(result => {
                                 res.json(result)
                         })
@@ -23,7 +24,7 @@ class TourController {
                 if (!req.params.id) {
                         return res.sendStatus(400)
                 }
-                Tour.updateOne({ _id: req.params.id }, req.body)
+                Rank.updateOne({ _id: req.params.id }, req.body)
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -35,7 +36,7 @@ class TourController {
                 if (!req.params.id) {
                         return res.sendStatus(400)
                 }
-                Tour.deleteOne({ _id: req.params.id })
+                Rank.deleteOne({ _id: req.params.id })
                         .then(() => {
                                 res.sendStatus(200); // Trả về status code 200 nếu lưu thành công
                         })
@@ -43,21 +44,6 @@ class TourController {
                                 res.sendStatus(500); // Trả về status code 500 nếu có lỗi xảy ra
                         });
         }
-        detail(req, res, next) {
-                const { slug } = req.params
-                Tour.findOne({ slug: slug })
-                        .then(result => {
-                                res.json(result)
-                        })
-                        .catch(next)
-        }
-        search(req, res, next) {
-                Tour.find().populate('agency').populate('category').populate('rank')
-                        .then(result => {
-                                res.json(result)
-                        })
-                        .catch(next)
-        }
 
 }
-module.exports = new TourController();
+module.exports = new RankController();

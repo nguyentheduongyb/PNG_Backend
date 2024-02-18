@@ -10,13 +10,13 @@ const Tour = new Schema({
                 "adult": { type: Number },
                 "child": { type: Number }
         },
-        category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+        category: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', require: true }],
         tourCode: { type: String, require: true },
         country: { type: String, require: true },
         destinations: [
                 { type: String, require: true }
         ],
-        expectedCost: { type: Number },
+        expectedCost: { type: Number, require: true },
         image: { type: String, require: true },
         duration: { type: String, require: true },
         ltinerary: {
@@ -33,7 +33,11 @@ const Tour = new Schema({
         inforVisa: { type: String },
         pricePolicy: { type: String },
         agency: { type: mongoose.Schema.Types.ObjectId, ref: 'Agency' },
-        status: { type: Boolean, require: true, default: true }
+        status: { type: Boolean, require: true, default: true },
+        rate: { type: Number },
+        rank: { type: mongoose.Schema.Types.ObjectId, ref: 'Rank' },
+
+
 }, {
         timestamps: true
 });
