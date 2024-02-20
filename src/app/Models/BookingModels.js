@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var slug = require('mongoose-slug-generator');
-mongoose.plugin(slug);
 
 const Booking = new Schema({
         user: {
@@ -10,6 +8,18 @@ const Booking = new Schema({
         tour: {
                 type: mongoose.Schema.Types.ObjectId, ref: 'Tour', require: true
         },
+        day: {
+                type: String, require: true
+        },
+        totalPrice: {
+                type: Number, require: true
+        },
+        adult: {
+                type: Number, require: true
+        },
+        child: {
+                type: Number, require: true
+        }
         // bookingStatus: {
         //         type: mongoose.Schema.Types.ObjectId, ref: 'BookingStatus'
         // },
